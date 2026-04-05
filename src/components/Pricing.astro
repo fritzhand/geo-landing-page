@@ -1,0 +1,142 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { pricing } = getSiteConfig();
+if (!pricing) return;
+---
+
+<section aria-label={pricing.heading} class="section-alt">
+  <div class="container">
+    <div class="pricing-header fade-up">
+      <h2>{pricing.heading}</h2>
+      {pricing.subheading && <p class="pricing-sub">{pricing.subheading}</p>}
+    </div>
+
+    <div class="pricing-grid">
+      {pricing.plans.map((plan, i) => (
+        <div class:list={['pricing-card', 'card', 'fade-up', { popular: plan.popular }]} data-delay={String(i * 100)}>
+          {plan.popular && <span class="popular-badge">Most Popular</span>}
+          <h3>{plan.name}</h3>
+          <div class="price">
+            <span class="price-value">{plan.price}</span>
+            {plan.period && <span class="price-period">{plan.period}</span>}
+          </div>
+          <p class="plan-desc">{plan.description}</p>
+          <ul class="features-list">
+            {plan.features.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+          <a href="#waitlist" class:list={['btn', plan.popular ? 'btn-primary' : 'btn-secondary']}>
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .pricing-sub {
+    font-size: 20px;
+    color: var(--color-text-muted);
+    margin-top: 16px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .pricing-card.popular {
+    border-color: var(--color-primary);
+    border-width: 2px;
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin: 16px 0;
+  }
+
+  .price-value {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .price-period {
+    font-size: 16px;
+    color: var(--color-text-muted);
+  }
+
+  .plan-desc {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+  }
+
+  .features-list li {
+    font-size: 14px;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .features-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: 700;
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+</style>

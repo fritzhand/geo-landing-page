@@ -1,0 +1,71 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { finalCta } = getSiteConfig();
+---
+
+<section aria-label="Call to Action" class="section-dark">
+  <div class="container cta-content">
+    <h2 class="cta-heading fade-up">{finalCta.heading}</h2>
+    {finalCta.subheading && (
+      <p class="cta-sub fade-up" data-delay="100">{finalCta.subheading}</p>
+    )}
+    <div class="cta-actions fade-up" data-delay="200">
+      <a href="#waitlist" class="btn btn-primary btn-lg">{finalCta.primaryCta}</a>
+    </div>
+    {finalCta.trustSnippet && (
+      <p class="cta-trust fade-up" data-delay="300">{finalCta.trustSnippet}</p>
+    )}
+  </div>
+</section>
+
+<style>
+  .cta-content {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-heading {
+    color: #FFFFFF;
+    font-size: 48px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta-heading {
+      color: var(--color-text);
+    }
+  }
+
+  .cta-sub {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta-sub {
+      color: var(--color-text-muted);
+    }
+  }
+
+  .cta-actions {
+    margin-top: 40px;
+  }
+
+  .btn-lg {
+    font-size: 18px;
+    padding: 18px 40px;
+  }
+
+  .cta-trust {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta-trust {
+      color: var(--color-text-muted);
+    }
+  }
+</style>

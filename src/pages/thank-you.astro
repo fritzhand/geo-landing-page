@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { getSiteConfig } from '@/lib/config';
+const { meta } = getSiteConfig();
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <section class="section" aria-label="Thank you">
+      <div class="container thank-you">
+        <h1>Thanks for joining!</h1>
+        <p>You're on the {meta.title} waitlist. We'll be in touch soon.</p>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .thank-you {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 96px 0;
+  }
+
+  .thank-you h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .thank-you p {
+    color: var(--color-text-muted);
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+</style>

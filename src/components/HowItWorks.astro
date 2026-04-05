@@ -1,0 +1,64 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { howItWorks } = getSiteConfig();
+---
+
+<section aria-label={howItWorks.heading} id="how-it-works" class="section-accent">
+  <div class="container">
+    <h2 class="fade-up">{howItWorks.heading}</h2>
+
+    <div class="steps-row">
+      {howItWorks.steps.map((step, i) => (
+        <div class="step-item fade-up" data-delay={String(i * 100)}>
+          <div class="step-number">{i + 1}</div>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  h2 {
+    margin-bottom: 64px;
+  }
+
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .step-item {
+    position: relative;
+  }
+
+  .step-number {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--color-primary);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-item h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .step-item p {
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .steps-row {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { valueBenefits } = getSiteConfig();
+---
+
+<section aria-label={valueBenefits.heading} class="section">
+  <div class="container">
+    <h2 class="fade-up">{valueBenefits.heading}</h2>
+
+    <div class="benefits-grid">
+      {valueBenefits.benefits.map((b, i) => (
+        <div class="benefit card fade-up" data-delay={String(i * 100)}>
+          <h3>{b.title}</h3>
+          <p>{b.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  h2 {
+    margin-bottom: 64px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .benefit h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .benefit p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

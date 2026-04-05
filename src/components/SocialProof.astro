@@ -1,0 +1,101 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { socialProof } = getSiteConfig();
+if (!socialProof) return;
+---
+
+<section aria-label="Social Proof" class="section-alt">
+  <div class="container">
+    {socialProof.logos && socialProof.logos.length > 0 && (
+      <div class="logos-row fade-up">
+        <p class="logos-label">Trusted by teams at</p>
+        <div class="logos-grid">
+          {socialProof.logos.map((logo) => (
+            <img src={logo.src} alt={logo.name} width="120" height="32" loading="lazy" />
+          ))}
+        </div>
+      </div>
+    )}
+
+    {socialProof.testimonials && socialProof.testimonials.length > 0 && (
+      <div class="testimonials-grid">
+        {socialProof.testimonials.map((t, i) => (
+          <blockquote class="testimonial card fade-up" data-delay={String(i * 100)}>
+            <p class="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+            <footer class="testimonial-author">
+              <cite>
+                <strong>{t.author}</strong>
+                <span>{t.role}</span>
+              </cite>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .logos-row {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .logos-label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .logos-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    opacity: 0.5;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial {
+    margin: 0;
+  }
+
+  .testimonial-quote {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+
+  .testimonial-author cite {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .testimonial-author strong {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .testimonial-author span {
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -12,6 +12,7 @@ We accept pull requests from the community.
 
 ## Guidelines
 
-- Follow the existing code style (clean code, functional components).
+- Follow the existing code style (Astro components, TypeScript).
 - Ensure no sensitive data is committed.
-- Keep the `landing.config.ts` structure intact unless upgrading the schema.
+- Keep the `site.config.yaml` and `design.config.yaml` schemas intact unless upgrading them.
+- Run `npm run build && npm run geo-check` before submitting — GEO score must stay 80+.

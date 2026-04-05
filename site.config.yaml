@@ -1,0 +1,157 @@
+meta:
+  title: "AcmeAI"
+  tagline: "Automate your workflow in seconds"
+  description: "AcmeAI helps startup founders automate repetitive workflows so they can focus on building what matters. Connect your tools, let AI handle the rest."
+  lang: "en"
+  url: "https://acmeai.com"
+  ogImage: "/placeholders/og.png"
+
+branding:
+  logo: "/logo.svg"
+  logoAlt: "AcmeAI Logo"
+
+hero:
+  headline: "Automate your workflow in seconds, not hours."
+  subheadline: "Stop wasting time on manual data entry, status updates, and report generation. AcmeAI connects your existing tools and automates the busywork so you can focus on building your startup."
+  primaryCta: "Join Waitlist"
+  secondaryCta: "Watch Demo"
+  secondaryCtaLink: "#how-it-works"
+  image:
+    src: "/product-shot.png"
+    alt: "AcmeAI Dashboard showing automated workflow builder"
+  trust:
+    metric:
+      value: "10,000+"
+      label: "Founders automating daily"
+
+socialProof:
+  logos:
+    - name: "TechCrunch"
+      src: "/logos/techcrunch.svg"
+    - name: "Product Hunt"
+      src: "/logos/producthunt.svg"
+    - name: "Y Combinator"
+      src: "/logos/yc.svg"
+  testimonials:
+    - quote: "Saved us 20 hours a week on reporting alone. We can't imagine going back."
+      author: "Jane Smith"
+      role: "CEO, Acme Corp"
+    - quote: "Setup took 5 minutes. The ROI was immediate."
+      author: "Marcus Chen"
+      role: "CTO, Launchpad"
+
+productExplanation:
+  heading: "See how it works"
+  subheading: "Simple, powerful, and built for speed."
+  steps:
+    - image: "/step-1.png"
+      caption: "1. Connect your favourite apps in one click."
+    - image: "/step-2.png"
+      caption: "2. Define your automation rules with plain English."
+    - image: "/step-3.png"
+      caption: "3. Watch AcmeAI handle the rest — automatically."
+
+howItWorks:
+  heading: "3 Simple Steps to Freedom"
+  steps:
+    - title: "Connect"
+      description: "Link your existing tools — Slack, Notion, Linear, GitHub — with one click."
+      icon: "Plug"
+    - title: "Automate"
+      description: "Describe what you want automated in plain English. No code required."
+      icon: "Zap"
+    - title: "Relax"
+      description: "AcmeAI runs your workflows 24/7. Get a weekly summary of everything it handled."
+      icon: "Coffee"
+
+valueBenefits:
+  heading: "Why top founders choose AcmeAI"
+  benefits:
+    - title: "Save 20+ Hours/Week"
+      description: "Reclaim your time for high-leverage work that actually moves the needle."
+    - title: "Zero Learning Curve"
+      description: "Describe automations in plain English. If you can write a Slack message, you can use AcmeAI."
+    - title: "Enterprise-Grade Reliability"
+      description: "99.9% uptime SLA with end-to-end encryption. Your data never leaves your infrastructure."
+    - title: "Connects Everything"
+      description: "200+ integrations out of the box. If it has an API, AcmeAI can automate it."
+
+pricing:
+  heading: "Simple, transparent pricing"
+  subheading: "Start for free. Upgrade when you're ready."
+  plans:
+    - name: "Starter"
+      price: "$0"
+      period: "/month"
+      description: "Perfect for side projects and solo founders."
+      features:
+        - "5 Automations"
+        - "1,000 runs/month"
+        - "Community support"
+        - "Core integrations"
+      cta: "Start Free"
+      popular: false
+    - name: "Growth"
+      price: "$49"
+      period: "/month"
+      description: "For startups that are ready to scale."
+      features:
+        - "Unlimited automations"
+        - "50,000 runs/month"
+        - "Priority support"
+        - "All integrations"
+        - "Team collaboration"
+        - "Custom webhooks"
+      cta: "Start Free Trial"
+      popular: true
+    - name: "Enterprise"
+      price: "Custom"
+      period: ""
+      description: "For teams with advanced security and compliance needs."
+      features:
+        - "Everything in Growth"
+        - "Unlimited runs"
+        - "Dedicated support"
+        - "SSO & SAML"
+        - "SLA guarantee"
+        - "On-prem deployment"
+      cta: "Contact Sales"
+      popular: false
+
+faq:
+  heading: "Questions? We have answers."
+  items:
+    - question: "What is AcmeAI?"
+      answer: "AcmeAI is a workflow automation platform built specifically for startup founders. It connects your existing tools (Slack, Notion, Linear, GitHub, and 200+ more) and automates repetitive tasks using plain-English instructions."
+    - question: "Is there a free plan?"
+      answer: "Yes. Our Starter plan is free forever — no credit card required. It includes 5 automations and 1,000 runs per month, which is plenty for solo founders and side projects."
+    - question: "How is this different from Zapier?"
+      answer: "AcmeAI is built for startup workflows specifically. Instead of visual flowcharts, you describe what you want in plain English. Our AI understands context — it can summarize a Linear sprint, draft a Slack standup, and update a Notion doc, all from one instruction."
+    - question: "Is my data secure?"
+      answer: "Yes. AcmeAI uses end-to-end encryption, and your data never leaves your infrastructure. We are SOC 2 Type II certified and GDPR compliant."
+    - question: "Can I cancel anytime?"
+      answer: "Yes. No contracts, no cancellation fees. Downgrade to the free Starter plan anytime and keep your existing automations."
+
+finalCta:
+  heading: "Ready to reclaim your time?"
+  subheading: "Join 10,000+ founders who automated the busywork."
+  primaryCta: "Join the Waitlist"
+  trustSnippet: "Free forever plan. No credit card required."
+
+footer:
+  copyright: "2026 AcmeAI Inc."
+  links:
+    - label: "Privacy Policy"
+      href: "/privacy"
+    - label: "Terms of Service"
+      href: "/terms"
+  socials:
+    - platform: "Twitter"
+      href: "https://twitter.com/acmeai"
+    - platform: "GitHub"
+      href: "https://github.com/acmeai"
+    - platform: "LinkedIn"
+      href: "https://linkedin.com/company/acmeai"
+
+waitlist:
+  provider: "mock"

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <section class="section" aria-label="Error">
+      <div class="container error-page">
+        <h1>Something went wrong</h1>
+        <p>We couldn't process your request. Please try again.</p>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .error-page {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 96px 0;
+  }
+
+  .error-page h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .error-page p {
+    color: var(--color-text-muted);
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+</style>

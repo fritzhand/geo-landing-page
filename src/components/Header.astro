@@ -1,0 +1,83 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { meta, branding } = getSiteConfig();
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo-link" aria-label={`${meta.title} home`}>
+      <img src={branding.logo} alt={branding.logoAlt} width="32" height="32" />
+      <span class="logo-text">{meta.title}</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#waitlist" class="btn btn-primary btn-sm">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .site-header {
+      background-color: rgba(9, 9, 11, 0.9);
+    }
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .logo-link:hover {
+    color: var(--color-text);
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--duration-short) ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .btn-sm {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+</style>

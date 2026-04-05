@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { getSiteConfig } from '@/lib/config';
+const { meta } = getSiteConfig();
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <section class="section" aria-label="Privacy Policy">
+      <div class="container privacy-content">
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+        <h2>Information We Collect</h2>
+        <p>{meta.title} collects only the information necessary to provide our service:</p>
+        <ul>
+          <li><strong>Email address:</strong> When you join our waitlist, we collect your email address to send you updates about {meta.title}.</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use your email address solely to:</p>
+        <ul>
+          <li>Send you updates about {meta.title} product launches and features</li>
+          <li>Respond to your inquiries</li>
+        </ul>
+
+        <h2>Data Storage & Security</h2>
+        <p>Your data is encrypted in transit and at rest. We do not sell, trade, or share your personal information with third parties.</p>
+
+        <h2>Your Rights</h2>
+        <p>You may request deletion of your data at any time by contacting us. You can unsubscribe from our emails using the link in any email.</p>
+
+        <h2>Cookies</h2>
+        <p>This website does not use cookies or tracking scripts.</p>
+
+        <h2>Contact</h2>
+        <p>For privacy questions, contact us at privacy@{new URL(meta.url).hostname}.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .privacy-content {
+    max-width: 720px;
+  }
+
+  .privacy-content h1 {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  .updated {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 48px;
+  }
+
+  .privacy-content h2 {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  .privacy-content p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .privacy-content ul {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    padding-left: 24px;
+    margin-bottom: 16px;
+  }
+
+  .privacy-content li {
+    margin-bottom: 8px;
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { hero, meta } = getSiteConfig();
+---
+
+<!-- First 200 words: directly answers "What is {meta.title}?" for GEO -->
+<section aria-label={`About ${meta.title}`} class="section">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1 class="hero-headline fade-up">
+        {hero.headline}
+      </h1>
+      <p class="hero-sub fade-up" data-delay="100">
+        {hero.subheadline}
+      </p>
+      <div class="hero-actions fade-up" data-delay="200">
+        <a href="#waitlist" class="btn btn-primary">{hero.primaryCta}</a>
+        {hero.secondaryCta && (
+          <a href={hero.secondaryCtaLink || '#'} class="btn btn-secondary">
+            {hero.secondaryCta}
+          </a>
+        )}
+      </div>
+      {hero.trust?.metric && (
+        <div class="hero-trust fade-up" data-delay="300">
+          <span class="trust-value">{hero.trust.metric.value}</span>
+          <span class="trust-label">{hero.trust.metric.label}</span>
+        </div>
+      )}
+    </div>
+    {hero.image && (
+      <div class="hero-visual fade-up" data-delay="200">
+        <img
+          src={hero.image.src}
+          alt={hero.image.alt}
+          width="560"
+          height="400"
+          loading="eager"
+        />
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-headline {
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--color-text);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-top: 24px;
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .trust-value {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  .trust-label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  .hero-visual img {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-headline {
+      font-size: 40px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+  }
+</style>

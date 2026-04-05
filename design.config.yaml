@@ -1,0 +1,47 @@
+colors:
+  primary: "#2563EB"
+  primaryHover: "#1D4ED8"
+  primaryLight: "#EFF6FF"
+  text: "#0A0A0B"
+  textMuted: "#71717A"
+  background: "#FFFFFF"
+  surface: "#FAFAFA"
+  surfaceAlt: "#F4F4F5"
+  border: "#E4E4E7"
+  success: "#16A34A"
+  warning: "#D97706"
+  error: "#DC2626"
+
+dark:
+  background: "#09090B"
+  surface: "#18181B"
+  surfaceAlt: "#27272A"
+  text: "#FAFAFA"
+  textMuted: "#A1A1AA"
+  border: "#3F3F46"
+  primary: "#3B82F6"
+  primaryHover: "#60A5FA"
+  primaryLight: "#172554"
+
+typography:
+  headingFont: "Cabinet Grotesk"
+  bodyFont: "DM Sans"
+  monoFont: "Geist Mono"
+  baseSize: "16px"
+  scale: 1.25
+
+spacing:
+  sectionPadding: "96px"
+  sectionPaddingMobile: "64px"
+  containerWidth: "1200px"
+  containerPadding: "24px"
+  borderRadius: "8px"
+  borderRadiusSm: "6px"
+  borderRadiusLg: "12px"
+
+aesthetic:
+  style: "clean"
+  heroLayout: "split"
+  cardStyle: "outlined"
+
+theme: "saas"

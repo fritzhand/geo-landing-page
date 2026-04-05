@@ -1,0 +1,110 @@
+---
+import { getSiteConfig, getDesignConfig } from '@/lib/config';
+import { generateAllSchemas } from '@/lib/schema';
+import '@/styles/global.css';
+
+const site = getSiteConfig();
+const design = getDesignConfig();
+const schemas = generateAllSchemas(site);
+
+const canonicalURL = new URL(Astro.url.pathname, site.meta.url);
+const ogImageURL = new URL(site.meta.ogImage, site.meta.url);
+
+// Generate CSS custom properties from design config
+const themeVars = `
+  --theme-primary: ${design.colors.primary};
+  --theme-primary-hover: ${design.colors.primaryHover};
+  --theme-primary-light: ${design.colors.primaryLight};
+  --theme-text: ${design.colors.text};
+  --theme-text-muted: ${design.colors.textMuted};
+  --theme-background: ${design.colors.background};
+  --theme-surface: ${design.colors.surface};
+  --theme-surface-alt: ${design.colors.surfaceAlt};
+  --theme-border: ${design.colors.border};
+  ${design.dark ? `
+  --theme-dark-primary: ${design.dark.primary};
+  --theme-dark-primary-hover: ${design.dark.primaryHover};
+  --theme-dark-primary-light: ${design.dark.primaryLight};
+  --theme-dark-text: ${design.dark.text};
+  --theme-dark-text-muted: ${design.dark.textMuted};
+  --theme-dark-background: ${design.dark.background};
+  --theme-dark-surface: ${design.dark.surface};
+  --theme-dark-surface-alt: ${design.dark.surfaceAlt};
+  --theme-dark-border: ${design.dark.border};
+  ` : ''}
+  ${design.typography ? `
+  --theme-base-size: ${design.typography.baseSize};
+  ` : ''}
+`;
+---
+
+<!DOCTYPE html>
+<html lang={site.meta.lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{site.meta.title} — {site.meta.tagline}</title>
+  <meta name="description" content={site.meta.description} />
+  <link rel="canonical" href={canonicalURL.href} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={`${site.meta.title} — ${site.meta.tagline}`} />
+  <meta property="og:description" content={site.meta.description} />
+  <meta property="og:image" content={ogImageURL.href} />
+  <meta property="og:url" content={canonicalURL.href} />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${site.meta.title} — ${site.meta.tagline}`} />
+  <meta name="twitter:description" content={site.meta.description} />
+  <meta name="twitter:image" content={ogImageURL.href} />
+
+  <!-- llms.txt discovery -->
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site info" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Theme CSS variables -->
+  <style set:html={`:root { ${themeVars} }`} />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={schemas} />
+</head>
+<body>
+  <slot />
+
+  <!-- Scroll animation observer -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseInt(el.dataset.delay || '0', 10);
+            setTimeout(() => el.classList.add('visible'), delay);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+      const htmlEl = el as HTMLElement;
+      if (!htmlEl.dataset.delay) {
+        htmlEl.dataset.delay = String(i * 100);
+      }
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

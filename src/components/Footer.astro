@@ -1,0 +1,72 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { footer, meta } = getSiteConfig();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="footer-name">{meta.title}</span>
+      <p class="footer-copyright">&copy; {footer.copyright}</p>
+    </div>
+
+    <div class="footer-links">
+      {footer.links && footer.links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+      {footer.socials && footer.socials.map((social) => (
+        <a href={social.href} target="_blank" rel="noopener noreferrer">{social.platform}</a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 48px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .footer-copyright {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--duration-short) ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+  }
+</style>

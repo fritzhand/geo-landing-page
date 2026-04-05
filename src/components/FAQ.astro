@@ -1,0 +1,95 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { faq } = getSiteConfig();
+---
+
+<section
+  aria-label="Frequently Asked Questions"
+  class="section"
+  itemscope
+  itemtype="https://schema.org/FAQPage"
+>
+  <div class="container">
+    <h2 class="fade-up">{faq.heading}</h2>
+
+    <div class="faq-list">
+      {faq.items.map((item, i) => (
+        <details
+          class="faq-item fade-up"
+          data-delay={String(i * 100)}
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question"
+        >
+          <summary itemprop="name">{item.question}</summary>
+          <div
+            class="faq-answer"
+            itemscope
+            itemprop="acceptedAnswer"
+            itemtype="https://schema.org/Answer"
+          >
+            <p itemprop="text">{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  h2 {
+    margin-bottom: 48px;
+  }
+
+  .faq-list {
+    max-width: 720px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+    padding: 24px 0;
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  summary {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    transition: transform var(--duration-short) ease;
+    flex-shrink: 0;
+  }
+
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding-top: 16px;
+  }
+
+  .faq-answer p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+</style>

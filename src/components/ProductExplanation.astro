@@ -1,0 +1,81 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { productExplanation } = getSiteConfig();
+---
+
+<section aria-label={productExplanation.heading} class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>{productExplanation.heading}</h2>
+      {productExplanation.subheading && (
+        <p class="section-sub">{productExplanation.subheading}</p>
+      )}
+    </div>
+
+    <div class="steps-grid">
+      {productExplanation.steps.map((step, i) => (
+        <figure class="step fade-up" data-delay={String(i * 100)}>
+          <div class="step-image">
+            <img src={step.image} alt={step.caption} width="600" height="400" loading="lazy" />
+          </div>
+          <figcaption class="step-caption">{step.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: 64px;
+  }
+
+  .section-sub {
+    font-size: 20px;
+    color: var(--color-text-muted);
+    margin-top: 16px;
+    max-width: 560px;
+  }
+
+  .steps-grid {
+    display: grid;
+    gap: 48px;
+  }
+
+  .step {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .step:nth-child(even) {
+    direction: rtl;
+  }
+
+  .step:nth-child(even) > * {
+    direction: ltr;
+  }
+
+  .step-image img {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    width: 100%;
+  }
+
+  .step-caption {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .step,
+    .step:nth-child(even) {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+  }
+</style>
