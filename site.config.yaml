@@ -1,7 +1,7 @@
 meta:
   title: "Your Startup Name"
   tagline: "A short, punchy tagline (6-10 words) that captures your core value prop"
-  description: "1-2 sentences describing what your product does, who it's for, and the main benefit. This appears in search results and social shares, so make it compelling. (~150 chars)"
+  description: "1-2 sentences: what your product does, who it's for, and the main benefit. Appears in search results. Keep under 160 chars."
   lang: "en"
   url: "https://yourdomain.com"
   ogImage: "/placeholders/og.png"
