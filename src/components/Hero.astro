@@ -14,7 +14,7 @@ const { hero, meta } = getSiteConfig();
         {hero.subheadline}
       </p>
       <div class="hero-actions fade-up" data-delay="200">
-        <a href="#waitlist" class="btn btn-primary">{hero.primaryCta}</a>
+        <a href={hero.primaryCtaLink} class="btn btn-primary">{hero.primaryCta}</a>
         {hero.secondaryCta && (
           <a href={hero.secondaryCtaLink || '#'} class="btn btn-secondary">
             {hero.secondaryCta}

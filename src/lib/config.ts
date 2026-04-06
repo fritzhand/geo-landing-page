@@ -66,6 +66,45 @@ const socialSchema = z.object({
   href: z.string(),
 });
 
+const preOrderProductSchema = z.object({
+  name: z.string(),
+  price: z.string(),
+  originalPrice: z.string().optional(),
+  availabilityDate: z.string(),
+  shippingNote: z.string().optional(),
+  depositNote: z.string().optional(),
+  cta: z.string(),
+  ctaLink: z.string().optional().default('#waitlist'),
+  features: z.array(z.string()).min(1).max(8),
+  image: z.string().optional(),
+});
+
+const preOrderSchema = z.object({
+  heading: z.string(),
+  subheading: z.string().optional(),
+  badge: z.string().optional(),
+  product: preOrderProductSchema,
+});
+
+const contactFormFieldSchema = z.object({
+  name: z.string(),
+  label: z.string(),
+  type: z.enum(['text', 'email', 'textarea', 'select']).default('text'),
+  required: z.boolean().default(true),
+  placeholder: z.string().optional(),
+  options: z.array(z.string()).optional(),
+});
+
+const contactFormSchema = z.object({
+  heading: z.string(),
+  subheading: z.string().optional(),
+  type: z.enum(['partnership', 'collaboration', 'investor', 'general']).default('general'),
+  provider: z.enum(['mock', 'resend', 'sheets']).default('mock'),
+  submitCta: z.string().default('Submit'),
+  successMessage: z.string().optional(),
+  fields: z.array(contactFormFieldSchema).optional(),
+});
+
 const siteConfigSchema = z.object({
   meta: z.object({
     title: z.string(),
@@ -83,6 +122,7 @@ const siteConfigSchema = z.object({
     headline: z.string(),
     subheadline: z.string(),
     primaryCta: z.string(),
+    primaryCtaLink: z.string().optional().default('#waitlist'),
     secondaryCta: z.string().optional(),
     secondaryCtaLink: z.string().optional(),
     image: heroImageSchema.optional(),
@@ -110,6 +150,8 @@ const siteConfigSchema = z.object({
     subheading: z.string().optional(),
     plans: z.array(pricingPlanSchema).min(1).max(3),
   }).optional(),
+  preOrder: preOrderSchema.optional(),
+  contactForm: contactFormSchema.optional(),
   faq: z.object({
     heading: z.string(),
     items: z.array(faqItemSchema).min(4).max(8),
@@ -119,6 +161,7 @@ const siteConfigSchema = z.object({
     subheading: z.string().optional(),
     primaryCta: z.string(),
     trustSnippet: z.string().optional(),
+    ctaTarget: z.string().optional().default('#waitlist'),
   }),
   footer: z.object({
     copyright: z.string(),
@@ -127,6 +170,8 @@ const siteConfigSchema = z.object({
   }),
   waitlist: z.object({
     provider: z.enum(['mock', 'resend', 'sheets']).default('mock'),
+    heading: z.string().optional(),
+    subheading: z.string().optional(),
   }),
 });
 
@@ -178,7 +223,7 @@ const designConfigSchema = z.object({
     heroLayout: z.enum(['split', 'centered', 'full-width']).default('split'),
     cardStyle: z.enum(['elevated', 'outlined', 'flat']).default('outlined'),
   }).optional(),
-  theme: z.enum(['saas', 'devtool', 'consumer', 'enterprise']).default('saas'),
+  theme: z.enum(['saas', 'devtool', 'consumer', 'enterprise', 'hardware', 'impact', 'biotech']).default('saas'),
 });
 
 export type SiteConfig = z.infer<typeof siteConfigSchema>;
@@ -188,6 +233,13 @@ function loadYaml(filename: string): unknown {
   const filePath = path.resolve(process.cwd(), filename);
   const raw = fs.readFileSync(filePath, 'utf-8');
   return YAML.parse(raw);
+}
+
+/** Load and parse any site config YAML by relative path (no singleton cache). */
+export function loadSiteConfigFromFile(relPath: string): SiteConfig {
+  const absPath = path.resolve(process.cwd(), relPath);
+  const raw = fs.readFileSync(absPath, 'utf-8');
+  return siteConfigSchema.parse(YAML.parse(raw));
 }
 
 let _siteConfig: SiteConfig | null = null;

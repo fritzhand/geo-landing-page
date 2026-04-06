@@ -1,0 +1,125 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: Pre-Launch Waitlist
+# Use case: Product not yet launched. Collect emails, build anticipation.
+#           No pricing, no contact form — pure waitlist capture.
+# Key differences: No pricing section, minimal product explanation,
+#   heavy focus on the waitlist CTA, launch timeline teaser.
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  title: "Orbit"
+  tagline: "Async collaboration built for makers, not meetings."
+  description: "Orbit replaces real-time meeting culture with async workflows — letting teams collaborate deeply across time zones without calendar chaos or Slack fatigue."
+  lang: "en"
+  url: "https://orbitapp.io"
+  ogImage: "/placeholders/og.png"
+
+branding:
+  logo: "/logo.svg"
+  logoAlt: "Orbit Logo"
+
+hero:
+  headline: "Deep work deserves better than a 60-minute Zoom."
+  subheadline: "Orbit is an async collaboration tool designed around thinking, not talking. Structured threads, voice memos, and decision records replace meeting culture — so your team can do their best work, anywhere, anytime."
+  primaryCta: "Join the Waitlist"
+  primaryCtaLink: "#waitlist-section"
+  secondaryCta: "See a preview"
+  secondaryCtaLink: "#how-it-works"
+  image:
+    src: "/product-shot.png"
+    alt: "Orbit async collaboration tool interface preview"
+  trust:
+    metric:
+      value: "4,100+"
+      label: "people on the waitlist"
+
+socialProof:
+  logos:
+    - name: "Product Hunt"
+      src: "/logos/producthunt.svg"
+    - name: "Hacker News"
+      src: "/logos/hn.svg"
+    - name: "Remote Work Community"
+      src: "/logos/remote.svg"
+  testimonials:
+    - quote: "I've been waiting for something like this for 5 years. My team is fully remote across 8 time zones. Orbit is exactly the missing layer between email and Slack."
+      author: "Tomás Reyes"
+      role: "CTO, distributed team of 18"
+    - quote: "The structured async thread concept is brilliant. I spend 30% of my week in meetings that should be documents. Orbit finally gives me a place to send people instead."
+      author: "Nadia Park"
+      role: "Product Lead, YC company"
+
+productExplanation:
+  heading: "A preview of what's coming"
+  subheading: "Orbit launches in Q3 2026. Here's a look at the three core workflows."
+  steps:
+    - image: "/step-1.png"
+      caption: "Async threads: Structured discussion prompts guide richer written contributions — no rambling, no context loss."
+    - image: "/step-2.png"
+      caption: "Voice memos: 2-minute voice notes with auto-transcription add tone and nuance without scheduling a call."
+    - image: "/step-3.png"
+      caption: "Decision records: Every resolved thread auto-generates a searchable record with context, rationale, and owner."
+
+howItWorks:
+  heading: "How Orbit replaces meeting culture"
+  steps:
+    - title: "Post"
+      description: "Start a structured async thread instead of scheduling a meeting. Orbit's prompts help you give teammates exactly the context they need to contribute meaningfully."
+      icon: "Edit"
+    - title: "Contribute"
+      description: "Team members respond in their own time — written replies, voice notes, or quick reactions. No one is blocked waiting for a slot on a shared calendar."
+      icon: "MessageSquare"
+    - title: "Decide"
+      description: "When threads are resolved, Orbit auto-generates a decision record and notifies stakeholders. Your org builds an institutional knowledge base without any extra work."
+      icon: "CheckCircle"
+
+valueBenefits:
+  heading: "Why teams are excited"
+  benefits:
+    - title: "Get 5+ hours back per person per week"
+      description: "The average knowledge worker attends 18 hours of meetings weekly. Research shows 70% of those could have been async. Orbit makes that shift frictionless."
+    - title: "Deep work by default"
+      description: "Orbit's notification model is designed around focus, not interruption. Updates arrive in digests, not pings. Your team gets into flow and stays there."
+    - title: "Real-time when it matters"
+      description: "Orbit doesn't eliminate synchronous work — it preserves it for creative, high-stakes moments. When you do meet, everyone's prepared and the meeting actually matters."
+    - title: "Built for remote-first teams"
+      description: "Made for teams across time zones, without forcing 6am calls. Orbit makes your best collaborators available to each other regardless of when or where they work."
+
+faq:
+  heading: "Frequently Asked Questions"
+  items:
+    - question: "When does Orbit launch?"
+      answer: "We're targeting a public beta in Q3 2026. Waitlist members get first access and will be onboarded in batches starting with the top of the list. We'll send weekly updates on development progress to everyone who's signed up."
+    - question: "Will there be a free plan?"
+      answer: "Yes. We'll offer a free tier for small teams (up to 5 people) with core async threading features. Larger teams and advanced features like decision analytics will be on paid plans. We'll share pricing details closer to launch."
+    - question: "How is Orbit different from Notion, Loom, or Asana?"
+      answer: "Orbit isn't a doc tool, a video tool, or a project tracker — it's a collaboration tool. Where Notion stores documents and Loom records video, Orbit structures the conversation: it's built around a specific workflow of raising topics, gathering input, and making decisions. Think of it as the glue layer between those tools."
+    - question: "What integrations will be available at launch?"
+      answer: "We're building native integrations with Slack, Notion, GitHub, Linear, and Google Workspace for the initial launch. Full API access will be available to all paid plans."
+    - question: "How do I make sure I get early access?"
+      answer: "Join the waitlist below. Spots are allocated in order of sign-up, with bonus spots for referrals. Share your unique referral link after signing up to move up the queue."
+
+finalCta:
+  heading: "Join 4,100+ people waiting for a calmer way to work."
+  subheading: "Launching Q3 2026. Waitlist members get first access and founding team pricing."
+  primaryCta: "Join the Waitlist"
+  trustSnippet: "Free to join. No credit card. You'll get a referral link to move up the queue."
+  ctaTarget: "#waitlist-section"
+
+footer:
+  copyright: "2026 Orbit Technologies, Inc."
+  links:
+    - label: "Privacy Policy"
+      href: "/privacy"
+    - label: "Terms of Service"
+      href: "/terms"
+  socials:
+    - platform: "Twitter"
+      href: "https://twitter.com/orbitapp"
+    - platform: "LinkedIn"
+      href: "https://linkedin.com/company/orbitapp"
+
+waitlist:
+  provider: "mock"
+  heading: "Get Early Access"
+  subheading: "Join the waitlist and we'll reach out with your spot in line and a referral link."

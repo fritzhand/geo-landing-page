@@ -1,0 +1,287 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { contactForm } = getSiteConfig();
+if (!contactForm) return;
+
+// Default field sets per form type
+const defaultFields = {
+  partnership: [
+    { name: 'name',     label: 'Your Name',               type: 'text',     required: true,  placeholder: 'Jane Smith' },
+    { name: 'email',    label: 'Work Email',               type: 'email',    required: true,  placeholder: 'jane@company.com' },
+    { name: 'company',  label: 'Company / Organization',   type: 'text',     required: true,  placeholder: 'Acme Corp' },
+    { name: 'role',     label: 'Your Role',                type: 'text',     required: false, placeholder: 'Head of Partnerships' },
+    { name: 'interest', label: 'Partnership Type',         type: 'select',   required: true,  options: ['Technology Integration', 'Distribution', 'Co-marketing', 'Strategic Alliance', 'OEM / Reseller', 'Other'] },
+    { name: 'message',  label: 'Tell us about the opportunity', type: 'textarea', required: true, placeholder: 'Describe your organization and what you have in mind...' },
+  ],
+  investor: [
+    { name: 'name',    label: 'Your Name',              type: 'text',     required: true,  placeholder: 'Jane Smith' },
+    { name: 'email',   label: 'Email',                  type: 'email',    required: true,  placeholder: 'jane@firm.com' },
+    { name: 'firm',    label: 'Fund / Firm',            type: 'text',     required: true,  placeholder: 'Sequoia Capital' },
+    { name: 'stage',   label: 'Investment Stage Focus', type: 'select',   required: true,  options: ['Pre-seed', 'Seed', 'Series A', 'Series B+', 'Growth / Late Stage'] },
+    { name: 'message', label: 'Message',                type: 'textarea', required: false, placeholder: 'Tell us about your thesis and why we might be a fit...' },
+  ],
+  collaboration: [
+    { name: 'name',    label: 'Your Name',         type: 'text',     required: true,  placeholder: 'Dr. Jane Smith' },
+    { name: 'email',   label: 'Email',             type: 'email',    required: true,  placeholder: 'jane@university.edu' },
+    { name: 'org',     label: 'Organization',      type: 'text',     required: true,  placeholder: 'University / Lab / NGO / Company' },
+    { name: 'area',    label: 'Collaboration Area', type: 'text',    required: true,  placeholder: 'Research, Clinical Trial, Joint Publishing, Open Source...' },
+    { name: 'message', label: 'Proposal Details',  type: 'textarea', required: true,  placeholder: 'Describe the collaboration you have in mind...' },
+  ],
+  general: [
+    { name: 'name',    label: 'Your Name', type: 'text',     required: true,  placeholder: 'Jane Smith' },
+    { name: 'email',   label: 'Email',     type: 'email',    required: true,  placeholder: 'you@example.com' },
+    { name: 'message', label: 'Message',   type: 'textarea', required: true,  placeholder: 'How can we help?' },
+  ],
+} as const;
+
+type FormType = keyof typeof defaultFields;
+const fields = contactForm.fields ?? defaultFields[contactForm.type as FormType] ?? defaultFields.general;
+const successMsg = contactForm.successMessage ?? "Thanks! We'll be in touch soon.";
+---
+
+<section aria-label={contactForm.heading} class="section" id="contact">
+  <div class="container contact-wrap">
+    <div class="contact-header fade-up">
+      <h2>{contactForm.heading}</h2>
+      {contactForm.subheading && (
+        <p class="contact-sub">{contactForm.subheading}</p>
+      )}
+    </div>
+
+    <form
+      id="contact-form"
+      class="contact-form card fade-up"
+      method="POST"
+      action="/api/contact"
+      data-enhanced="false"
+      data-delay="100"
+    >
+      <!-- Honeypot for spam prevention -->
+      <input type="text" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="form_type" value={contactForm.type} />
+
+      <div class="form-fields">
+        {fields.map((field) => (
+          <div class:list={['field-group', { 'field-full': field.type === 'textarea' }]}>
+            <label for={`cf-${field.name}`}>{field.label}{field.required && <span aria-hidden="true"> *</span>}</label>
+            {field.type === 'textarea' ? (
+              <textarea
+                id={`cf-${field.name}`}
+                name={field.name}
+                required={field.required}
+                placeholder={'placeholder' in field ? field.placeholder : undefined}
+                rows={4}
+                class="form-input form-textarea"
+              />
+            ) : field.type === 'select' ? (
+              <select
+                id={`cf-${field.name}`}
+                name={field.name}
+                required={field.required}
+                class="form-input form-select"
+              >
+                <option value="">Select an option…</option>
+                {('options' in field && field.options) && field.options.map((opt: string) => (
+                  <option value={opt}>{opt}</option>
+                ))}
+              </select>
+            ) : (
+              <input
+                type={field.type}
+                id={`cf-${field.name}`}
+                name={field.name}
+                required={field.required}
+                placeholder={'placeholder' in field ? field.placeholder : undefined}
+                autocomplete={field.type === 'email' ? 'email' : field.name === 'name' ? 'name' : undefined}
+                class="form-input"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="form-footer">
+        <button type="submit" class="btn btn-primary btn-lg">
+          {contactForm.submitCta}
+        </button>
+        <div class="form-message" aria-live="polite" data-success={successMsg}></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact-wrap {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .contact-sub {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    margin-top: 12px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field-full {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  label span {
+    color: var(--color-primary);
+  }
+
+  .form-input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color var(--duration-short) ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .form-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-message {
+    font-size: 14px;
+    min-height: 20px;
+  }
+
+  .form-message.success {
+    color: var(--color-success);
+  }
+
+  .form-message.error {
+    color: var(--color-error);
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) {
+    .form-fields {
+      grid-template-columns: 1fr;
+    }
+
+    .field-full {
+      grid-column: 1;
+    }
+
+    .form-footer .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  if (form) {
+    form.dataset.enhanced = 'true';
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msgEl = form.querySelector('.form-message') as HTMLElement;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const successMsg = msgEl.dataset.success ?? "Thanks! We'll be in touch soon.";
+
+      btn.disabled = true;
+      const originalText = btn.textContent ?? 'Submit';
+      btn.textContent = 'Sending…';
+      msgEl.textContent = '';
+      msgEl.className = 'form-message';
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          body: formData,
+          headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        });
+        const data = await res.json();
+        if (data.success) {
+          msgEl.textContent = successMsg;
+          msgEl.classList.add('success');
+          form.reset();
+        } else {
+          msgEl.textContent = data.error ?? 'Something went wrong. Please try again.';
+          msgEl.classList.add('error');
+        }
+      } catch {
+        msgEl.textContent = 'Network error. Please try again.';
+        msgEl.classList.add('error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  }
+</script>

@@ -1,0 +1,131 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: Impact / Nonprofit / Social Enterprise
+# Use case: Mission-driven org seeking volunteers, donors, and partners.
+#           No pricing. Waitlist is customised as a "Get Involved" form.
+# Key differences from SaaS: impact metrics in hero trust, donation framing,
+#   partner logos instead of press logos, volunteer-oriented CTAs.
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  title: "Watershed"
+  tagline: "Mapping the world's water access gap — one community at a time."
+  description: "Watershed maps global water access gaps to guide policy, aid, and investment. Free data for researchers, governments, and humanitarian organizations."
+  lang: "en"
+  url: "https://watershedglobal.org"
+  ogImage: "/placeholders/og.png"
+
+branding:
+  logo: "/logo.svg"
+  logoAlt: "Watershed Global Logo"
+
+hero:
+  headline: "2.2 billion people lack access to safe water. We're mapping the gap."
+  subheadline: "Watershed combines remote sensing, community-contributed data, and machine learning to build a real-time, open-source map of water access worldwide — powering smarter aid and policy decisions."
+  primaryCta: "Get Involved"
+  primaryCtaLink: "#waitlist"
+  secondaryCta: "Explore the map"
+  secondaryCtaLink: "#how-it-works"
+  image:
+    src: "/product-shot.png"
+    alt: "Watershed global water access map interface"
+  trust:
+    metric:
+      value: "62 countries"
+      label: "mapped to date"
+
+socialProof:
+  logos:
+    - name: "UNICEF"
+      src: "/logos/unicef.svg"
+    - name: "World Resources Institute"
+      src: "/logos/wri.svg"
+    - name: "Gates Foundation"
+      src: "/logos/gates.svg"
+    - name: "Schmidt Futures"
+      src: "/logos/schmidt.svg"
+  testimonials:
+    - quote: "Watershed's data helped us redirect $4M in infrastructure investment to communities that hadn't appeared in any previous assessment. That's the power of good mapping."
+      author: "Amara Diallo"
+      role: "Program Director, Water Access Fund"
+    - quote: "I've worked in global health data for 15 years. Watershed is the first platform that makes community-level water access data actually usable by decision-makers."
+      author: "Dr. Priya Mehta"
+      role: "Senior Researcher, Johns Hopkins Bloomberg School of Public Health"
+
+productExplanation:
+  heading: "How Watershed builds the map"
+  subheading: "Three data streams combine into a single, continuously updated picture of water access worldwide."
+  steps:
+    - image: "/step-1.png"
+      caption: "Remote sensing: Satellite imagery and AI detect water sources, infrastructure, and seasonal changes at 10m resolution."
+    - image: "/step-2.png"
+      caption: "Community data: Trained local contributors verify on-ground conditions, flag outages, and add contextual data unavailable from orbit."
+    - image: "/step-3.png"
+      caption: "Open API: Governments, NGOs, and researchers access verified, structured data through a free public API and downloadable datasets."
+
+howItWorks:
+  heading: "How we create change"
+  steps:
+    - title: "Map"
+      description: "We build and maintain the world's most granular open-source water access dataset, updated continuously from satellite and community sources."
+      icon: "Globe"
+    - title: "Inform"
+      description: "Aid organizations, governments, and investors use our data to target resources where they're needed most — not where it's easiest to report."
+      icon: "BarChart2"
+    - title: "Verify"
+      description: "Community partners on the ground close the loop, confirming interventions work and updating the map as conditions improve."
+      icon: "CheckCircle"
+
+valueBenefits:
+  heading: "Why Watershed matters"
+  benefits:
+    - title: "Open data. No gatekeeping."
+      description: "Every dataset, every API endpoint, every visualization is free to use for research, policy, and humanitarian work. Openness is the only way this works."
+    - title: "Community-verified accuracy"
+      description: "Satellite data alone misses 40% of rural water points. Our 3,200 trained community contributors close that gap with on-the-ground verification."
+    - title: "Policy-grade quality"
+      description: "Watershed data meets UN SDG 6 reporting standards and is already used in four national water strategies."
+    - title: "Built for the long haul"
+      description: "We're structured as a nonprofit with a diversified funding model — foundation grants, government contracts, and a paid API tier for commercial users — so the mission can sustain itself."
+
+faq:
+  heading: "Frequently Asked Questions"
+  items:
+    - question: "Is Watershed a nonprofit?"
+      answer: "Yes. Watershed is a 501(c)(3) non-profit organization. We're funded by a combination of foundation grants, UN agency contracts, and a paid API tier for commercial users (like water utilities and ESG investment firms). Core data is free for all non-commercial uses."
+    - question: "How can I contribute data?"
+      answer: "You can join our Community Contributor program — a 4-hour training (available in 14 languages) qualifies you to verify water points in your region using our mobile app. We have contributors in 62 countries and are actively recruiting in sub-Saharan Africa, South Asia, and Latin America."
+    - question: "How does Watershed use my donation?"
+      answer: "82 cents of every dollar goes directly to program operations: satellite data licensing, community contributor stipends, and technology infrastructure. 18% covers organizational overhead. We publish full financial statements annually."
+    - question: "Can my organization use the data commercially?"
+      answer: "Non-commercial use (research, NGOs, journalism, policy) is always free. Commercial users — water utilities, investment firms, engineering consultancies — can access structured data through our paid API tier. Revenue from the commercial tier funds the free public access."
+    - question: "How do I partner or collaborate with Watershed?"
+      answer: "We're actively seeking partnerships with water utilities, national statistics offices, research institutions, and humanitarian organizations. Use the 'Get Involved' form on this page to start a conversation with our partnerships team."
+
+finalCta:
+  heading: "Join us in closing the water access gap."
+  subheading: "Whether you contribute data, fund the mission, or use our API — every connection gets us closer to a world where water access is visible."
+  primaryCta: "Get Involved"
+  trustSnippet: "501(c)(3) nonprofit. EIN 82-XXXXXXX. 82% program efficiency."
+  ctaTarget: "#waitlist"
+
+footer:
+  copyright: "2026 Watershed Global, Inc. (501c3)"
+  links:
+    - label: "Privacy Policy"
+      href: "/privacy"
+    - label: "Data Use Policy"
+      href: "/data-use"
+    - label: "Annual Report"
+      href: "/annual-report"
+  socials:
+    - platform: "Twitter"
+      href: "https://twitter.com/watershedglobal"
+    - platform: "LinkedIn"
+      href: "https://linkedin.com/company/watershedglobal"
+    - platform: "GitHub"
+      href: "https://github.com/watershedglobal"
+
+waitlist:
+  provider: "mock"
+  heading: "Get Involved"
+  subheading: "Tell us how you'd like to contribute — volunteer, research partner, donor, or all three. We'll follow up within 48 hours."

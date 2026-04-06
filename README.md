@@ -67,11 +67,29 @@ npx vercel
 
 | Path | Best For | What Happens |
 |------|----------|-------------|
-| **Quick** | Power users | Edit `site.config.yaml` by hand, deploy |
+| **Quick** | Power users | Pick a template, edit `site.config.yaml` by hand, deploy |
 | **AI** | Most users | Open repo with AI tool — it asks about your startup, generates config |
 | **Pro** | Best results | Write a PRD, create `DESIGN.md` via AI, generate a fully customized site |
 
 > **AI setup works with any tool.** Claude Code reads `CLAUDE.md`, Codex/Antigravity reads `AGENTS.md`, Gemini CLI reads `GEMINI.md`. Same flow, different files.
+
+### Pick a Template
+
+Copy the template closest to your startup type into `site.config.yaml`, then fill in your content.
+
+| Template | File | CTA | Use when… |
+|---|---|---|---|
+| **SaaS** | `site.config.yaml` (default) | Pricing tiers | Software product with free/paid plans |
+| **Hardware** | `templates/hardware.config.yaml` | Pre-order card | Physical product not yet shipping |
+| **Impact / Nonprofit** | `templates/impact.config.yaml` | "Get Involved" waitlist | Mission-driven org, no pricing |
+| **Biotech** | `templates/biotech.config.yaml` | Investor contact form | Pre-commercial science company |
+| **Waitlist Only** | `templates/waitlist.config.yaml` | Email capture | Pre-launch, build the list |
+| **Partnership** | `templates/partnership.config.yaml` | Partnership contact form | Seeking resellers, partners, or collaborators |
+
+```bash
+# Use a template
+cp templates/hardware.config.yaml site.config.yaml
+```
 
 ---
 
@@ -128,16 +146,24 @@ hero:
 |---------|----------|--------|
 | `meta` | Yes | title, tagline, description, url, lang, ogImage |
 | `branding` | Yes | logo, logoAlt |
-| `hero` | Yes | headline, subheadline, primaryCta, secondaryCta, image, trust |
+| `hero` | Yes | headline, subheadline, primaryCta, `primaryCtaLink`, secondaryCta, image, trust |
 | `socialProof` | No | logos, testimonials |
 | `productExplanation` | Yes | heading, subheading, steps (2–4) |
 | `howItWorks` | Yes | heading, steps (exactly 3) |
 | `valueBenefits` | Yes | heading, benefits (3–6) |
 | `pricing` | No | heading, subheading, plans (1–3) |
+| `preOrder` | No | heading, subheading, badge, product (name, price, features, cta…) |
+| `contactForm` | No | heading, subheading, type, provider, submitCta, successMessage, fields |
 | `faq` | Yes | heading, items (4–8) |
-| `finalCta` | Yes | heading, subheading, primaryCta, trustSnippet |
+| `finalCta` | Yes | heading, subheading, primaryCta, trustSnippet, `ctaTarget` |
 | `footer` | Yes | copyright, links, socials |
-| `waitlist` | Yes | provider (mock / resend / sheets) |
+| `waitlist` | Yes | provider, `heading`, `subheading` |
+
+**Notes:**
+- `pricing`, `preOrder`, and `contactForm` are all optional and mutually exclusive by convention — use the one that fits your startup type.
+- `hero.primaryCtaLink` defaults to `#waitlist`; set to `#contact` or `#pre-order` for other templates.
+- `finalCta.ctaTarget` defaults to `#waitlist`; should match `primaryCtaLink`.
+- When `contactForm` is present it replaces the waitlist form in the page layout.
 
 </details>
 
@@ -171,6 +197,9 @@ theme: "saas"               # saas | devtool | consumer | enterprise
 | `devtool` | Green `#10B981` | Dark-first, terminal aesthetic, monospace accents |
 | `consumer` | Orange `#F97316` | Warm, rounded, friendly |
 | `enterprise` | Navy `#0F172A` | Restrained, trust-heavy, data-oriented |
+| `hardware` | Slate `#334155` | Solid, product-forward, industrial |
+| `impact` | Teal `#0D9488` | Mission-driven, warm, accessible |
+| `biotech` | Indigo `#4338CA` | Scientific, credible, future-focused |
 
 ### Dark Mode
 
@@ -178,9 +207,13 @@ Automatic via `prefers-color-scheme`. Dark colors are configurable in `design.co
 
 ---
 
-## Waitlist Form
+## Forms
 
-Progressive enhancement — works with and without JavaScript.
+Both forms use progressive enhancement — they work with and without JavaScript.
+
+### Waitlist Form (`/api/waitlist`)
+
+A simple email capture form. Renders when `contactForm` is **not** present in the config.
 
 | Provider | How It Works | Env Vars Needed |
 |----------|-------------|-----------------|
@@ -188,9 +221,22 @@ Progressive enhancement — works with and without JavaScript.
 | `resend` | Sends confirmation email | `RESEND_API_KEY`, `RESEND_FROM` |
 | `sheets` | Appends row to Google Sheet | `SHEETS_WEBHOOK_URL` |
 
-Set in `site.config.yaml` under `waitlist.provider`. See `.env.example` for env var setup.
+Set via `waitlist.provider` in `site.config.yaml`.
 
-**Built-in protections:** honeypot field (spam), IP-based rate limiting (5/hr), email validation.
+### Contact Form (`/api/contact`)
+
+A multi-field form with four types. Renders when `contactForm` is present in the config (replaces the waitlist form).
+
+| Type | Default Fields | Use For |
+|------|---------------|---------|
+| `partnership` | name, email, company, role, partnership type (select), message | Resellers, ecosystem builders |
+| `investor` | name, email, firm, investment stage (select), message | Biotech, deep tech, pre-revenue |
+| `collaboration` | name, email, org, area, message | Research, academic, NGO |
+| `general` | name, email, message | General inquiries |
+
+Override any field set by providing a `fields:` array in the config.
+
+**Built-in protections on both forms:** honeypot field, IP-based rate limiting (5/hr), email validation, input length capping (2 000 chars).
 
 ---
 
@@ -202,6 +248,12 @@ design.config.yaml              # Design config (what it LOOKS like)
 DESIGN.md                       # Design system documentation
 CLAUDE.md / AGENTS.md / GEMINI.md  # AI tool instructions
 astro.config.mjs                # Astro + Vercel + Tailwind config
+templates/
+  hardware.config.yaml          # Hardware / pre-order template
+  impact.config.yaml            # Impact / nonprofit template
+  biotech.config.yaml           # Biotech / investor template
+  waitlist.config.yaml          # Pre-launch waitlist-only template
+  partnership.config.yaml       # Partnership / collaboration template
 scripts/
   geo-check.ts                  # GEO verification (0-100 score)
   verify-deploy.ts              # Post-deploy health check
@@ -216,18 +268,22 @@ src/
     thank-you.astro             # Form success (no-JS fallback)
     error.astro                 # Form error (no-JS fallback)
     llms.txt.ts                 # Auto-generated llms.txt endpoint
-    api/waitlist.ts             # Waitlist API route (server-rendered)
+    api/
+      waitlist.ts               # Waitlist API route (server-rendered)
+      contact.ts                # Contact/partnership API route
   components/
     Header.astro                # Sticky nav with logo
-    Hero.astro                  # First-200-words optimized
+    Hero.astro                  # First-200-words optimized (configurable CTA link)
     SocialProof.astro           # Logos + testimonials
     ProductExplanation.astro    # Asymmetric step-by-step
     HowItWorks.astro            # 3-step numbered grid
     ValueBenefits.astro         # Benefits cards
-    Pricing.astro               # 1-3 plan pricing table
+    Pricing.astro               # 1-3 plan pricing table (SaaS templates)
+    PreOrder.astro              # Single product pre-order card (hardware templates)
+    ContactForm.astro           # Multi-field contact form (partnership/biotech)
     FAQ.astro                   # Schema.org FAQ microdata
-    FinalCTA.astro              # Dark CTA section
-    WaitlistForm.astro          # Progressive enhancement form
+    FinalCTA.astro              # Dark CTA section (configurable target)
+    WaitlistForm.astro          # Progressive enhancement email form
     Footer.astro                # Links + socials
   lib/
     config.ts                   # YAML loading + Zod validation
@@ -257,7 +313,9 @@ All pages are pre-rendered as static HTML at build time. Only the waitlist API r
 1. Update `meta.url` in `site.config.yaml` with your production URL
 2. Replace `public/placeholders/og.png` with your OG image (1200 x 630)
 3. Update the `Sitemap:` URL in `public/robots.txt`
-4. Set env vars for your waitlist provider (if not using `mock`)
+4. Set env vars for your form provider (if not using `mock`):
+   - Waitlist: `RESEND_API_KEY` / `RESEND_FROM` or `SHEETS_WEBHOOK_URL`
+   - Contact form uses the same provider/vars via `contactForm.provider`
 5. Verify:
 
 ```bash

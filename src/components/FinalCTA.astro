@@ -10,7 +10,7 @@ const { finalCta } = getSiteConfig();
       <p class="cta-sub fade-up" data-delay="100">{finalCta.subheading}</p>
     )}
     <div class="cta-actions fade-up" data-delay="200">
-      <a href="#waitlist" class="btn btn-primary btn-lg">{finalCta.primaryCta}</a>
+      <a href={finalCta.ctaTarget} class="btn btn-primary btn-lg">{finalCta.primaryCta}</a>
     </div>
     {finalCta.trustSnippet && (
       <p class="cta-trust fade-up" data-delay="300">{finalCta.trustSnippet}</p>

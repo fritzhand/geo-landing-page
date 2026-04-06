@@ -7,10 +7,14 @@ import ProductExplanation from '@/components/ProductExplanation.astro';
 import HowItWorks from '@/components/HowItWorks.astro';
 import ValueBenefits from '@/components/ValueBenefits.astro';
 import Pricing from '@/components/Pricing.astro';
+import PreOrder from '@/components/PreOrder.astro';
+import ContactForm from '@/components/ContactForm.astro';
 import FAQ from '@/components/FAQ.astro';
 import FinalCTA from '@/components/FinalCTA.astro';
 import WaitlistForm from '@/components/WaitlistForm.astro';
 import Footer from '@/components/Footer.astro';
+import { getSiteConfig } from '@/lib/config';
+const { contactForm, waitlist } = getSiteConfig();
 ---
 
 <BaseLayout>
@@ -22,13 +26,41 @@ import Footer from '@/components/Footer.astro';
     <HowItWorks />
     <ValueBenefits />
     <Pricing />
+    <PreOrder />
     <FAQ />
     <FinalCTA />
-    <section aria-label="Join Waitlist" class="section" id="waitlist-section">
-      <div class="container">
-        <WaitlistForm />
-      </div>
-    </section>
+    {contactForm ? (
+      <ContactForm />
+    ) : (
+      <section
+        aria-label={waitlist.heading ?? 'Join Waitlist'}
+        class="section"
+        id="waitlist-section"
+      >
+        <div class="container">
+          {(waitlist.heading || waitlist.subheading) && (
+            <div class="waitlist-header">
+              {waitlist.heading && <h2>{waitlist.heading}</h2>}
+              {waitlist.subheading && <p class="waitlist-sub">{waitlist.subheading}</p>}
+            </div>
+          )}
+          <WaitlistForm />
+        </div>
+      </section>
+    )}
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .waitlist-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .waitlist-sub {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+  }
+</style>

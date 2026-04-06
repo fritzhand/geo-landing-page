@@ -1,0 +1,135 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: Biotech / Life Sciences
+# Use case: Early-stage biotech seeking investor interest, research partners,
+#           and clinical collaborators. No pricing. Uses contactForm (investor)
+#           instead of a simple email waitlist.
+# Key differences: pipeline/research section language, clinical evidence framing,
+#   scientific advisory board testimonials, institution logos.
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  title: "Cultivia"
+  tagline: "Precision fermentation. Animal-free proteins at scale."
+  description: "Cultivia uses yeast fermentation to produce animal-identical proteins — dairy, egg, and collagen — with 97% lower land use and zero animal inputs."
+  lang: "en"
+  url: "https://cultiviabio.com"
+  ogImage: "/placeholders/og.png"
+
+branding:
+  logo: "/logo.svg"
+  logoAlt: "Cultivia Biotech Logo"
+
+hero:
+  headline: "We grow the proteins animals make — without the animals."
+  subheadline: "Cultivia's precision fermentation platform programs food-grade yeast to produce complete, functional animal proteins at commercial scale. Our first product, CaseinX, is identical to bovine casein — with 97% lower land use and full regulatory clearance in process."
+  primaryCta: "Request Investor Deck"
+  primaryCtaLink: "#contact"
+  secondaryCta: "See the science"
+  secondaryCtaLink: "#how-it-works"
+  image:
+    src: "/product-shot.png"
+    alt: "Cultivia fermentation bioreactor and protein output"
+  trust:
+    metric:
+      value: "97%"
+      label: "lower land use vs. conventional dairy"
+
+socialProof:
+  logos:
+    - name: "IndieBio"
+      src: "/logos/indiebio.svg"
+    - name: "MIT Media Lab"
+      src: "/logos/mit.svg"
+    - name: "Ginkgo Bioworks"
+      src: "/logos/ginkgo.svg"
+    - name: "The Good Food Institute"
+      src: "/logos/gfi.svg"
+  testimonials:
+    - quote: "Cultivia's strain engineering is genuinely differentiated. The yield data at the 1,000L scale is the best I've seen from a company at this stage. This is the real deal."
+      author: "Dr. Rachel Kim"
+      role: "Partner, Synthesis Capital"
+    - quote: "We've been looking for a precision fermentation partner for our dairy-free product line for two years. Cultivia's CaseinX is the first ingredient that actually behaves like native casein in our formulations."
+      author: "Henrik Larsson"
+      role: "Head of R&D, Oatly Labs"
+
+productExplanation:
+  heading: "From gene to ingredient in three stages"
+  subheading: "Cultivia's platform takes a protein target from sequence to food-grade ingredient through a validated, scalable pipeline."
+  steps:
+    - image: "/step-1.png"
+      caption: "Gene design: We synthesize and optimize the coding sequence for the target protein using our proprietary codon optimization algorithm."
+    - image: "/step-2.png"
+      caption: "Strain engineering: The sequence is integrated into our chassis yeast strain via CRISPR, then iteratively improved for yield and stability across 200+ generations."
+    - image: "/step-3.png"
+      caption: "Scale-up: Validated strains run in standard stainless steel bioreactors. Our process is equipment-agnostic and has been validated from lab to 5,000L pilot scale."
+
+howItWorks:
+  heading: "Platform. Pipeline. Partners."
+  steps:
+    - title: "Platform"
+      description: "Our core IP is a yeast strain engineering platform. We build proprietary strains for internal product development and license the platform to CPG and ingredient partners."
+      icon: "Cpu"
+    - title: "Pipeline"
+      description: "Three internal products in development: CaseinX (dairy, pilot scale), OvoAlbumin (egg white, bench scale), and CollaGen (bioactive collagen peptides, discovery)."
+      icon: "GitBranch"
+    - title: "Partners"
+      description: "We partner with food manufacturers who need reliable, scalable supply of animal-identical proteins for product development and commercial supply agreements."
+      icon: "Users"
+
+valueBenefits:
+  heading: "Why Cultivia's approach wins"
+  benefits:
+    - title: "Animal-identical function, not a compromise"
+      description: "Our proteins are structurally identical to their animal-derived equivalents — same amino acid sequence, same folding, same functional behavior in food applications."
+    - title: "Platform extensibility"
+      description: "The same strain engineering pipeline works across any secreted protein. We're not locked to one ingredient — every validated strain adds to our IP portfolio."
+    - title: "Regulatory-first development"
+      description: "We engage with FDA's Generally Recognized as Safe (GRAS) process from day one. CaseinX has received GRAS self-affirmation with independent expert panel review."
+    - title: "Equipment-agnostic scale-up"
+      description: "Our process runs in standard stainless steel bioreactors used by every major fermentation CMO worldwide — no proprietary hardware dependency or capital risk for partners."
+
+# No pricing for biotech. Uses contactForm (investor type) instead.
+contactForm:
+  heading: "Connect with the Cultivia Team"
+  subheading: "We're actively engaging investors, R&D partners, and ingredient buyers for our Series A and first commercial supply agreements. Fill out the form and we'll respond within 2 business days."
+  type: "investor"
+  provider: "mock"
+  submitCta: "Request Investor Deck"
+  successMessage: "Thanks — we'll send the deck and reach out to schedule a call within 2 business days."
+
+faq:
+  heading: "Frequently Asked Questions"
+  items:
+    - question: "What is precision fermentation?"
+      answer: "Precision fermentation is a process that programs microorganisms — typically yeast or bacteria — to produce specific proteins or other molecules. We use food-grade yeast engineered to secrete target proteins into the fermentation broth, which is then filtered and dried into a functional ingredient. The resulting protein is chemically identical to the animal-derived original."
+    - question: "What stage is Cultivia at?"
+      answer: "We're a seed-stage company (founded 2024). CaseinX is at pilot scale (1,000L validated runs). We've completed independent structural characterization confirming protein identity and are in process for FDA GRAS self-affirmation. We're raising a $12M Series A to fund 10,000L scale-up and first commercial supply agreements."
+    - question: "What's the regulatory path?"
+      answer: "Precision fermentation ingredients intended for food use in the US require FDA GRAS status. We're pursuing self-affirmation with an independent panel of food science experts — the same path taken by Perfect Day (whey proteins) and Clara Foods. We expect CaseinX GRAS affirmation by Q3 2026."
+    - question: "How do you protect your IP?"
+      answer: "Our core IP is in our strain engineering process and the specific genetic constructs we've developed. We have two provisional patents filed covering our codon optimization algorithm and our secretion pathway engineering approach. Strains are additionally protected via trade secret."
+    - question: "Are you open to partnerships with food manufacturers?"
+      answer: "Yes. We're actively seeking two to three food manufacturer partners for co-development agreements on CaseinX — this gives partners preferred pricing and early access to supply in exchange for providing application development data. Please reach out through the contact form to discuss."
+
+finalCta:
+  heading: "Advancing precision fermentation from lab to shelf."
+  subheading: "We're seeking partners who believe the future of protein doesn't require animals."
+  primaryCta: "Connect With Us"
+  trustSnippet: "Seed stage · 2 patents filed · FDA GRAS in process · Backed by IndieBio"
+  ctaTarget: "#contact"
+
+footer:
+  copyright: "2026 Cultivia Biosciences, Inc."
+  links:
+    - label: "Privacy Policy"
+      href: "/privacy"
+    - label: "Terms of Service"
+      href: "/terms"
+  socials:
+    - platform: "LinkedIn"
+      href: "https://linkedin.com/company/cultivia"
+    - platform: "Twitter"
+      href: "https://twitter.com/cultiviabio"
+
+waitlist:
+  provider: "mock"

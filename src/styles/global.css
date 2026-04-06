@@ -245,4 +245,7 @@ img {
   .section, .section-alt, .section-accent, .section-dark {
     padding: var(--section-padding-mobile) 0;
   }
+  .card {
+    padding: 20px;
+  }
 }

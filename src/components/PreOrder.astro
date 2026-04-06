@@ -1,0 +1,223 @@
+---
+import { getSiteConfig } from '@/lib/config';
+const { preOrder } = getSiteConfig();
+if (!preOrder) return;
+---
+
+<section aria-label={preOrder.heading} class="section-alt" id="pre-order">
+  <div class="container">
+    <div class="preorder-header fade-up">
+      {preOrder.badge && <span class="preorder-badge">{preOrder.badge}</span>}
+      <h2>{preOrder.heading}</h2>
+      {preOrder.subheading && <p class="preorder-sub">{preOrder.subheading}</p>}
+    </div>
+
+    <div class:list={['preorder-card', 'card', 'fade-up', { 'has-image': !!preOrder.product.image }]} data-delay="100">
+      {preOrder.product.image && (
+        <div class="preorder-image">
+          <img
+            src={preOrder.product.image}
+            alt={preOrder.product.name}
+            width="480"
+            height="360"
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div class="preorder-details">
+        <h3>{preOrder.product.name}</h3>
+
+        <div class="preorder-price">
+          <span class="price-value">{preOrder.product.price}</span>
+          {preOrder.product.originalPrice && (
+            <span class="price-original">{preOrder.product.originalPrice}</span>
+          )}
+        </div>
+
+        {preOrder.product.availabilityDate && (
+          <div class="availability">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Ships {preOrder.product.availabilityDate}</span>
+          </div>
+        )}
+
+        {preOrder.product.shippingNote && (
+          <p class="shipping-note">{preOrder.product.shippingNote}</p>
+        )}
+
+        <ul class="features-list">
+          {preOrder.product.features.map((f) => (
+            <li>{f}</li>
+          ))}
+        </ul>
+
+        <a href={preOrder.product.ctaLink} class="btn btn-primary btn-lg preorder-cta">
+          {preOrder.product.cta}
+        </a>
+
+        {preOrder.product.depositNote && (
+          <p class="deposit-note">{preOrder.product.depositNote}</p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .preorder-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .preorder-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .preorder-sub {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    margin-top: 12px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .preorder-card {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .preorder-card.has-image {
+    flex-direction: row;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .preorder-image {
+    flex: 0 0 auto;
+    width: 380px;
+  }
+
+  .preorder-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    display: block;
+  }
+
+  .preorder-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .preorder-details h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .preorder-price {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .price-value {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+
+  .price-original {
+    font-size: 22px;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+  }
+
+  .availability {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .shipping-note {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .features-list li::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background-color: var(--color-primary-light);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .preorder-cta {
+    margin-top: 8px;
+    align-self: flex-start;
+  }
+
+  .deposit-note {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin: 4px 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .preorder-card.has-image {
+      flex-direction: column;
+    }
+
+    .preorder-image {
+      width: 100%;
+    }
+
+    .preorder-cta {
+      align-self: stretch;
+      text-align: center;
+    }
+  }
+</style>

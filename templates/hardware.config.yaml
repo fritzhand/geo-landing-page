@@ -1,0 +1,149 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: Hardware Startup
+# Use case: Physical product with pre-order + waitlist. No SaaS pricing tiers.
+# Key sections: preOrder (replaces pricing), waitlist for "notify me on launch"
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  title: "Kestrel"
+  tagline: "Know your air. Protect your health."
+  description: "Kestrel is a pocket-sized air quality monitor that tracks PM2.5, CO₂, VOC, humidity, and temperature in real time — syncing instantly to iOS and Android."
+  lang: "en"
+  url: "https://kestrelair.co"
+  ogImage: "/placeholders/og.png"
+
+branding:
+  logo: "/logo.svg"
+  logoAlt: "Kestrel Air Quality Monitor Logo"
+
+hero:
+  headline: "The air quality monitor that fits in your pocket."
+  subheadline: "Kestrel tracks 5 key air health metrics in real time and sends instant alerts when levels go unsafe. Built for homes, offices, schools, and anywhere you breathe."
+  primaryCta: "Reserve Yours — $149"
+  primaryCtaLink: "#pre-order"
+  secondaryCta: "See the specs"
+  secondaryCtaLink: "#how-it-works"
+  image:
+    src: "/product-shot.png"
+    alt: "Kestrel air quality monitor device"
+  trust:
+    metric:
+      value: "2,400+"
+      label: "units pre-ordered"
+
+socialProof:
+  logos:
+    - name: "TechCrunch"
+      src: "/logos/techcrunch.svg"
+    - name: "The Wirecutter"
+      src: "/logos/wirecutter.svg"
+    - name: "Y Combinator W26"
+      src: "/logos/yc.svg"
+  testimonials:
+    - quote: "I finally understand what 'bad air days' actually means — Kestrel showed my home office CO₂ was 3x higher than recommended. Problem solved in a day."
+      author: "Marcus Chen"
+      role: "Software Engineer, Remote Worker"
+    - quote: "We placed 12 units across our school. The data directly informed our HVAC upgrade decision. Worth every penny."
+      author: "Dr. Lisa Nwosu"
+      role: "Facilities Director, Lincoln Charter School"
+
+productExplanation:
+  heading: "Five metrics. One device. Instant clarity."
+  subheading: "Kestrel measures what matters for the air you breathe — continuously, in real time."
+  steps:
+    - image: "/step-1.png"
+      caption: "PM2.5: Fine particle pollution linked to respiratory disease. Kestrel tracks it to 0.1 µg/m³."
+    - image: "/step-2.png"
+      caption: "CO₂ & VOC: Stuffy rooms and off-gassing toxins detected instantly with smart threshold alerts."
+    - image: "/step-3.png"
+      caption: "App dashboard: Historical charts, location tagging, and shareable reports on iOS and Android."
+
+howItWorks:
+  heading: "Up and running in 60 seconds"
+  steps:
+    - title: "Unbox"
+      description: "Charge via USB-C for 2 hours. No setup required — the device starts measuring immediately."
+      icon: "Package"
+    - title: "Connect"
+      description: "Open the Kestrel app, tap 'Add Device', and pair over Bluetooth. Data syncs in real time."
+      icon: "Bluetooth"
+    - title: "Monitor"
+      description: "Check live readings, set custom alert thresholds, and get notifications when air quality drops."
+      icon: "Bell"
+
+valueBenefits:
+  heading: "Why Kestrel is different"
+  benefits:
+    - title: "7-day battery. No outlet needed."
+      description: "Our efficient sensor stack runs for a full week on a single charge, so Kestrel goes wherever you do."
+    - title: "Lab-grade accuracy at consumer price"
+      description: "Kestrel uses the same optical PM2.5 sensor found in $1,200 industrial monitors — for a fraction of the cost."
+    - title: "No subscription. Ever."
+      description: "All data is yours. Cloud sync, historical access, and firmware updates are free for life."
+    - title: "Works with HomeKit, Google Home & more"
+      description: "Use Kestrel as a smart home sensor to trigger automations — open a window, switch on a purifier, and more."
+
+# Pre-order section (replaces pricing for hardware startups)
+preOrder:
+  heading: "Pre-Order the Kestrel Air Monitor"
+  subheading: "First batch ships June 2026. Early-bird pricing ends when we hit 500 units — 387 claimed."
+  badge: "Early Bird — 25% Off"
+  product:
+    name: "Kestrel Air Monitor"
+    price: "$149"
+    originalPrice: "$199"
+    availabilityDate: "June 2026"
+    shippingNote: "Free shipping to the US, Canada, and EU"
+    depositNote: "Fully refundable before we ship — no questions asked."
+    cta: "Reserve My Kestrel"
+    ctaLink: "#waitlist"
+    features:
+      - "PM2.5, CO₂, VOC, humidity & temperature sensors"
+      - "7-day rechargeable battery (USB-C)"
+      - "iOS & Android app with historical charts"
+      - "HomeKit, Google Home, and IFTTT support"
+      - "Open API for home automation"
+      - "Free lifetime data access and firmware updates"
+      - "Compact design (2.4\" × 1.3\" × 0.6\")"
+      - "Ships with charging cable and pocket clip"
+
+faq:
+  heading: "Frequently Asked Questions"
+  items:
+    - question: "What does Kestrel actually measure?"
+      answer: "Kestrel monitors five air quality indicators: PM2.5 particulate matter, CO₂ concentration, total volatile organic compounds (TVOC), relative humidity, and temperature. All five are displayed in real time on your phone."
+    - question: "How accurate is the PM2.5 sensor?"
+      answer: "We use a Plantower PMS7003 laser particle counter — the same sensor in professional air quality stations. Accuracy is ±15% for PM2.5 at normal indoor concentrations, independently verified in our beta program."
+    - question: "Is there a monthly subscription?"
+      answer: "No. Kestrel is a one-time purchase. The app, cloud sync, historical data storage, and all future firmware updates are free forever. We make money selling hardware, not locking data behind subscriptions."
+    - question: "When will my unit ship?"
+      answer: "We're targeting June 2026 for the first production batch of 500 units. Pre-order customers get priority fulfillment. We'll email weekly production updates from manufacturing through delivery."
+    - question: "Can I get a refund before it ships?"
+      answer: "Yes, full refund any time before we ship your unit. After shipping, we offer a 30-day satisfaction guarantee — return it for any reason for a full refund."
+    - question: "Does it work without the app?"
+      answer: "Yes. The device has a small e-ink display showing live readings for all 5 metrics. The app adds historical charts, alerts, and smart home integrations, but is not required for basic use."
+
+finalCta:
+  heading: "Reserve yours before early-bird ends."
+  subheading: "387 of 500 early-bird units have been claimed. Don't pay full price in July."
+  primaryCta: "Pre-Order for $149"
+  trustSnippet: "Full refund if you change your mind. Ships June 2026."
+  ctaTarget: "#pre-order"
+
+footer:
+  copyright: "2026 Kestrel Labs, Inc."
+  links:
+    - label: "Privacy Policy"
+      href: "/privacy"
+    - label: "Terms of Service"
+      href: "/terms"
+  socials:
+    - platform: "Twitter"
+      href: "https://twitter.com/kestrelai"
+    - platform: "Instagram"
+      href: "https://instagram.com/kestrelai"
+
+waitlist:
+  provider: "mock"
+  heading: "Join the Notify List"
+  subheading: "Sold out of early-bird units? Join below and we'll email you as soon as the next batch is available."

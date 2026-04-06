@@ -1,0 +1,137 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATE: Partnership / Collaboration Interest
+# Use case: Company actively seeking partners, ecosystem builders, resellers,
+#           or integration collaborators. No pricing tiers — a "partner with us"
+#           contact form replaces the waitlist.
+# Key differences: contactForm (partnership type), partner tier descriptions
+#   in valueBenefits, partner logo social proof, partnership-focused FAQ.
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  title: "Meridian"
+  tagline: "Clean energy infrastructure. Built with local partners."
+  description: "Meridian designs, finances, and operates solar + storage for commercial real estate and municipalities — partnering with local developers and EPC contractors."
+  lang: "en"
+  url: "https://meridianenergy.com"
+  ogImage: "/placeholders/og.png"
+
+branding:
+  logo: "/logo.svg"
+  logoAlt: "Meridian Energy Logo"
+
+hero:
+  headline: "We bring the capital, technology, and offtake. You bring the market."
+  subheadline: "Meridian partners with commercial real estate developers, municipalities, and regional utilities to deploy distributed solar + storage systems. We handle project finance, hardware procurement, and grid interconnection. Partners bring the customer relationships."
+  primaryCta: "Become a Partner"
+  primaryCtaLink: "#contact"
+  secondaryCta: "See our model"
+  secondaryCtaLink: "#how-it-works"
+  image:
+    src: "/product-shot.png"
+    alt: "Meridian solar installation on commercial rooftop"
+  trust:
+    metric:
+      value: "380 MW"
+      label: "deployed across 47 partner projects"
+
+socialProof:
+  logos:
+    - name: "Blackstone Real Estate"
+      src: "/logos/blackstone.svg"
+    - name: "Duke Energy"
+      src: "/logos/duke.svg"
+    - name: "City of Austin"
+      src: "/logos/austin.svg"
+    - name: "US DOE Loan Programs Office"
+      src: "/logos/doe.svg"
+  testimonials:
+    - quote: "Meridian structured a 20-year PPA and handled interconnection from start to finish. All we had to do was introduce them to our tenants. The economics were compelling for everyone."
+      author: "Sarah Thornton"
+      role: "SVP Asset Management, Thornton Industrial REIT"
+    - quote: "We wanted to offer solar to our municipal buildings but had no in-house expertise. Meridian provided engineering, permitting, finance, and O&M under one roof. Six months from signed MOU to energized."
+      author: "James Carter"
+      role: "Director of Sustainability, City of Raleigh"
+
+productExplanation:
+  heading: "How a Meridian partnership works"
+  subheading: "From introductions to energized assets in 6 to 12 months, with no capital required from our partners."
+  steps:
+    - image: "/step-1.png"
+      caption: "Deal origination: Partners introduce us to their customers or portfolio properties. We scope the project and run the financial model — at no cost to the partner or end customer."
+    - image: "/step-2.png"
+      caption: "Project development: Meridian manages permitting, utility interconnection, hardware procurement, and EPC contracting. Partners stay informed with a dedicated project dashboard."
+    - image: "/step-3.png"
+      caption: "Revenue sharing: Partners earn a referral fee at financial close plus an ongoing annual commission for the life of the project (typically 20–25 years)."
+
+howItWorks:
+  heading: "Three partner tracks"
+  steps:
+    - title: "Referral Partner"
+      description: "Introduce us to property owners, municipalities, or utilities. Earn a referral fee at financial close and annual commissions on the project's power revenue — typically $25K–$150K per project."
+      icon: "Share2"
+    - title: "Development Partner"
+      description: "Regional developers and EPC contractors who take an active role in project development and permitting. Earn a larger revenue share and preferred access to Meridian's pipeline."
+      icon: "Briefcase"
+    - title: "Institutional Partner"
+      description: "Utilities, REITs, and municipalities seeking a long-term clean energy infrastructure partner. Co-develop a multi-site pipeline with dedicated Meridian support and co-investment options."
+      icon: "Building"
+
+valueBenefits:
+  heading: "Why infrastructure developers partner with Meridian"
+  benefits:
+    - title: "No capital at risk for partners"
+      description: "Meridian brings all project equity and debt financing. Partners originate deals and manage relationships — we handle the balance sheet risk."
+    - title: "White-glove project delivery"
+      description: "From permitting to interconnection to commissioning, Meridian handles every technical and regulatory step. Partners don't need in-house solar expertise to offer clean energy solutions."
+    - title: "Long-term recurring revenue"
+      description: "Projects generate 20–25 year power purchase agreements. Partner commissions are tied to the project's annual generation — a predictable, compounding revenue stream."
+    - title: "Proven at scale"
+      description: "380 MW deployed across 47 projects in 12 states. Meridian has a track record with investment-grade counterparties, lenders, and utilities that de-risks any new partnership."
+
+# Partnership contact form instead of pricing
+contactForm:
+  heading: "Become a Meridian Partner"
+  subheading: "Whether you're a commercial real estate developer, regional contractor, or municipality exploring distributed energy — we'd like to hear about your market and portfolio. Our partnerships team will follow up within 3 business days."
+  type: "partnership"
+  provider: "mock"
+  submitCta: "Submit Partnership Inquiry"
+  successMessage: "Thanks for reaching out. Our partnerships team will be in touch within 3 business days."
+
+faq:
+  heading: "Partnership FAQ"
+  items:
+    - question: "What types of organizations does Meridian partner with?"
+      answer: "We work with commercial real estate developers and asset managers (office, industrial, retail), municipalities and public agencies, regional utilities seeking clean energy procurement, and EPC contractors who want to offer financed solar to their existing clients."
+    - question: "What size projects does Meridian finance?"
+      answer: "We focus on behind-the-meter and front-of-meter commercial projects from 500 kW to 20 MW. This includes rooftop, carport, and ground-mount solar paired with battery storage. We can aggregate smaller projects across a portfolio into a single financing structure."
+    - question: "Does a partner need solar industry experience?"
+      answer: "No. Referral partners only need relationships with property owners or energy buyers — Meridian handles all technical and financial work. Development partners benefit from general real estate or construction experience, but we provide full training and support on the solar-specific aspects."
+    - question: "How does partner revenue work?"
+      answer: "Referral partners earn a one-time fee at financial close (typically 0.5–1.5% of total project value) plus an annual commission (0.5–1¢/kWh) for 20 years. Development partners earn a larger share of project economics in exchange for their active development role."
+    - question: "What geographic markets does Meridian operate in?"
+      answer: "We currently operate in 22 states across the US, with concentration in the Mid-Atlantic, Southeast, Texas, and Southwest. We're actively expanding to the Midwest and Pacific Northwest. We evaluate partnership opportunities in all markets and can move into new states with the right partner."
+    - question: "How long does it take from partner introduction to a closed project?"
+      answer: "Typically 6–12 months from a qualified introduction to financial close, depending on project complexity and permitting timelines. We target first-project delivery within 9 months for most referral partners."
+
+finalCta:
+  heading: "Build the clean energy economy with us."
+  subheading: "380 MW deployed. 47 partners. We're ready to grow with the right next partner."
+  primaryCta: "Start the Conversation"
+  trustSnippet: "No exclusivity required. No upfront cost. Three business day response guaranteed."
+  ctaTarget: "#contact"
+
+footer:
+  copyright: "2026 Meridian Energy Partners, LLC"
+  links:
+    - label: "Privacy Policy"
+      href: "/privacy"
+    - label: "Terms of Service"
+      href: "/terms"
+  socials:
+    - platform: "LinkedIn"
+      href: "https://linkedin.com/company/meridianenergy"
+    - platform: "Twitter"
+      href: "https://twitter.com/meridianenergy"
+
+waitlist:
+  provider: "mock"
