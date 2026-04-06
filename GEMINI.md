@@ -32,6 +32,8 @@ Copy the chosen template to `site.config.yaml`, then fill in the user's content.
 - Run `npm run geo-check` after any content changes to verify GEO score
 - `contactForm` in the config replaces the waitlist form; set `hero.primaryCtaLink`
   and `finalCta.ctaTarget` to `#contact` when using it
+- Homepage (`/`) is the template gallery. Each template has a live demo at `/templates/{slug}`
+- Dark mode toggle (sun/moon) in the header, with localStorage persistence
 
 ## Key Commands
 

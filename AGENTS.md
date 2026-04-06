@@ -14,7 +14,7 @@ traditional SEO scores.
 
 - **Framework:** Astro 5 (static HTML output)
 - **Styling:** Tailwind CSS v4 + CSS custom properties
-- **Deployment:** Vercel (static + one API route for waitlist form)
+- **Deployment:** Vercel (static + two API routes for waitlist and contact forms)
 - **Config:** Two YAML files drive all content and design
 
 ## Setup Paths
@@ -58,7 +58,8 @@ Visual customization: colors, fonts, spacing, card style, hero layout.
 If this file is missing, sensible defaults are used.
 
 ## Key Files
-- `src/pages/index.astro` — Main landing page
+- `src/pages/index.astro` — Template gallery (homepage)
+- `src/pages/templates/[slug].astro` — Per-template live demo pages
 - `src/components/` — All section components (including `PreOrder.astro`, `ContactForm.astro`)
 - `src/lib/config.ts` — Config loading + Zod validation
 - `src/lib/schema.ts` — Schema.org JSON-LD generation

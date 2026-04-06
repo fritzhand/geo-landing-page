@@ -203,7 +203,7 @@ theme: "saas"               # saas | devtool | consumer | enterprise
 
 ### Dark Mode
 
-Automatic via `prefers-color-scheme`. Dark colors are configurable in `design.config.yaml` under `dark:`.
+Manual toggle (sun/moon button in header) + automatic `prefers-color-scheme` fallback. User preference persists in `localStorage`. Dark colors are configurable in `design.config.yaml` under `dark:`.
 
 ---
 
@@ -261,9 +261,10 @@ public/
   robots.txt                    # AI crawler-friendly
   placeholders/                 # Demo images (replace with yours)
 src/
-  layouts/BaseLayout.astro      # HTML shell, meta, Schema.org, fonts
+  layouts/BaseLayout.astro      # HTML shell, meta, Schema.org, fonts, dark mode FOUC script
   pages/
-    index.astro                 # Landing page
+    index.astro                 # Template gallery (homepage)
+    templates/[slug].astro      # Per-template live demo pages
     privacy.astro               # Privacy policy
     thank-you.astro             # Form success (no-JS fallback)
     error.astro                 # Form error (no-JS fallback)
@@ -272,7 +273,7 @@ src/
       waitlist.ts               # Waitlist API route (server-rendered)
       contact.ts                # Contact/partnership API route
   components/
-    Header.astro                # Sticky nav with logo
+    Header.astro                # Sticky nav with logo + dark mode toggle
     Hero.astro                  # First-200-words optimized (configurable CTA link)
     SocialProof.astro           # Logos + testimonials
     ProductExplanation.astro    # Asymmetric step-by-step
@@ -306,7 +307,7 @@ Click the deploy button at the top, or:
 npx vercel
 ```
 
-All pages are pre-rendered as static HTML at build time. Only the waitlist API route (`/api/waitlist`) is server-rendered.
+All pages are pre-rendered as static HTML at build time. The API routes (`/api/waitlist` and `/api/contact`) are server-rendered.
 
 ### Post-Deploy Checklist
 

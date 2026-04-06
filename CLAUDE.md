@@ -14,6 +14,9 @@ Key artifacts:
 - Vercel adapter for deployment
 - Two YAML configs validated by Zod at build time
 - GEO-optimized HTML: Schema.org JSON-LD, llms.txt, semantic landmarks, FAQ microdata
+- Dark mode toggle (sun/moon in header) with localStorage persistence + OS fallback
+- Homepage is the template gallery (`/`), each template has a live demo at `/templates/{slug}`
+- Config override mechanism in `config.ts` (`setSiteConfigOverride`) powers per-template demos
 
 ## Template Library
 Six templates are available. When a user describes their startup type, pick the right one:
