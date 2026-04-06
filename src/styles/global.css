@@ -231,7 +231,12 @@ img {
 }
 
 /* --- Responsive --- */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
+  h1 { font-size: 56px; letter-spacing: -0.025em; }
+  h2 { font-size: 40px; }
+}
+
+@media (max-width: 767px) {
   h1 { font-size: 40px; letter-spacing: -0.02em; }
   h2 { font-size: 32px; }
   h3 { font-size: 20px; }
