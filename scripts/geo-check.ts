@@ -234,10 +234,12 @@ function checkHeadingDescriptiveness(html: string): CheckResult {
   };
 }
 
-// Main
-const indexHtml = readFile('index.html');
+// Main — check the SaaS demo page (the canonical landing page for GEO scoring).
+// The root index.html is the template gallery, not a GEO-optimized landing page.
+const geoTarget = 'templates/saas/index.html';
+const indexHtml = readFile(geoTarget);
 if (!indexHtml) {
-  console.error('❌ dist/index.html not found. Run `npm run build` first.');
+  console.error(`❌ dist/${geoTarget} not found. Run \`npm run build\` first.`);
   process.exit(1);
 }
 
