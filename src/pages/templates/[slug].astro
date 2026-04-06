@@ -1,0 +1,127 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import SocialProof from '@/components/SocialProof.astro';
+import ProductExplanation from '@/components/ProductExplanation.astro';
+import HowItWorks from '@/components/HowItWorks.astro';
+import ValueBenefits from '@/components/ValueBenefits.astro';
+import Pricing from '@/components/Pricing.astro';
+import PreOrder from '@/components/PreOrder.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import FAQ from '@/components/FAQ.astro';
+import FinalCTA from '@/components/FinalCTA.astro';
+import WaitlistForm from '@/components/WaitlistForm.astro';
+import Footer from '@/components/Footer.astro';
+import { loadSiteConfigFromFile, setSiteConfigOverride, clearSiteConfigOverride } from '@/lib/config';
+
+const TEMPLATE_MAP: Record<string, string> = {
+  saas: 'site.config.yaml',
+  hardware: 'templates/hardware.config.yaml',
+  impact: 'templates/impact.config.yaml',
+  biotech: 'templates/biotech.config.yaml',
+  waitlist: 'templates/waitlist.config.yaml',
+  partnership: 'templates/partnership.config.yaml',
+};
+
+export function getStaticPaths() {
+  const templates: Record<string, string> = {
+    saas: 'site.config.yaml',
+    hardware: 'templates/hardware.config.yaml',
+    impact: 'templates/impact.config.yaml',
+    biotech: 'templates/biotech.config.yaml',
+    waitlist: 'templates/waitlist.config.yaml',
+    partnership: 'templates/partnership.config.yaml',
+  };
+  return Object.entries(templates).map(([slug, file]) => ({
+    params: { slug },
+    props: { file },
+  }));
+}
+
+const { slug } = Astro.params;
+const { file } = Astro.props;
+const configFile = file as string;
+const config = loadSiteConfigFromFile(configFile);
+setSiteConfigOverride(config);
+
+const { contactForm, waitlist } = config;
+---
+
+<BaseLayout>
+  <Header />
+  <div class="demo-banner">
+    <div class="container banner-inner">
+      <span>Viewing the <strong>{slug}</strong> template</span>
+      <a href="/">← Back to gallery</a>
+    </div>
+  </div>
+  <main>
+    <Hero />
+    <SocialProof />
+    <ProductExplanation />
+    <HowItWorks />
+    <ValueBenefits />
+    <Pricing />
+    <PreOrder />
+    <FAQ />
+    <FinalCTA />
+    {contactForm ? (
+      <ContactForm />
+    ) : (
+      <section
+        aria-label={waitlist.heading ?? 'Join Waitlist'}
+        class="section"
+        id="waitlist-section"
+      >
+        <div class="container">
+          {(waitlist.heading || waitlist.subheading) && (
+            <div class="waitlist-header">
+              {waitlist.heading && <h2>{waitlist.heading}</h2>}
+              {waitlist.subheading && <p class="waitlist-sub">{waitlist.subheading}</p>}
+            </div>
+          )}
+          <WaitlistForm />
+        </div>
+      </section>
+    )}
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .demo-banner {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .demo-banner a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  .demo-banner a:hover {
+    color: #ffffff;
+  }
+
+  .waitlist-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .waitlist-sub {
+    font-size: 18px;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+  }
+</style>

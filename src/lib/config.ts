@@ -243,9 +243,20 @@ export function loadSiteConfigFromFile(relPath: string): SiteConfig {
 }
 
 let _siteConfig: SiteConfig | null = null;
+let _siteConfigOverride: SiteConfig | null = null;
 let _designConfig: DesignConfig | null = null;
 
+/** Override the site config for the current render (used by template demo pages). */
+export function setSiteConfigOverride(config: SiteConfig): void {
+  _siteConfigOverride = config;
+}
+
+export function clearSiteConfigOverride(): void {
+  _siteConfigOverride = null;
+}
+
 export function getSiteConfig(): SiteConfig {
+  if (_siteConfigOverride) return _siteConfigOverride;
   if (_siteConfig) return _siteConfig;
   const raw = loadYaml('site.config.yaml');
   _siteConfig = siteConfigSchema.parse(raw);

@@ -41,6 +41,14 @@ const themeVars = `
 <!DOCTYPE html>
 <html lang={site.meta.lang}>
 <head>
+  <script is:inline>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') {
+        document.documentElement.classList.add(t);
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{site.meta.title} — {site.meta.tagline}</title>

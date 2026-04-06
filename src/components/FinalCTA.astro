@@ -36,6 +36,10 @@ const { finalCta } = getSiteConfig();
     }
   }
 
+  html.dark .cta-heading {
+    color: var(--color-text);
+  }
+
   .cta-sub {
     font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
@@ -46,6 +50,10 @@ const { finalCta } = getSiteConfig();
     .cta-sub {
       color: var(--color-text-muted);
     }
+  }
+
+  html.dark .cta-sub {
+    color: var(--color-text-muted);
   }
 
   .cta-actions {
@@ -67,5 +75,9 @@ const { finalCta } = getSiteConfig();
     .cta-trust {
       color: var(--color-text-muted);
     }
+  }
+
+  html.dark .cta-trust {
+    color: var(--color-text-muted);
   }
 </style>

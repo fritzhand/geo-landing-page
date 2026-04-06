@@ -146,6 +146,44 @@ img {
   }
 }
 
+/* --- Manual dark mode toggle --- */
+html.dark {
+  --color-primary: var(--theme-dark-primary, #3B82F6);
+  --color-primary-hover: var(--theme-dark-primary-hover, #60A5FA);
+  --color-primary-light: var(--theme-dark-primary-light, #172554);
+  --color-text: var(--theme-dark-text, #FAFAFA);
+  --color-text-muted: var(--theme-dark-text-muted, #A1A1AA);
+  --color-background: var(--theme-dark-background, #09090B);
+  --color-surface: var(--theme-dark-surface, #18181B);
+  --color-surface-alt: var(--theme-dark-surface-alt, #27272A);
+  --color-border: var(--theme-dark-border, #3F3F46);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
+
+html.dark .section-dark {
+  background-color: var(--color-surface);
+}
+
+html.dark .section-accent {
+  background-color: var(--color-primary-light);
+}
+
+/* Reset to light when user explicitly chose light (overrides OS dark pref) */
+html.light {
+  --color-primary: var(--theme-primary, #2563EB);
+  --color-primary-hover: var(--theme-primary-hover, #1D4ED8);
+  --color-primary-light: var(--theme-primary-light, #EFF6FF);
+  --color-text: var(--theme-text, #0A0A0B);
+  --color-text-muted: var(--theme-text-muted, #71717A);
+  --color-background: var(--theme-background, #FFFFFF);
+  --color-surface: var(--theme-surface, #FAFAFA);
+  --color-surface-alt: var(--theme-surface-alt, #F4F4F5);
+  --color-border: var(--theme-border, #E4E4E7);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
+  color-scheme: light;
+}
+
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
