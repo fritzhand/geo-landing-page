@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-/* --- Font loading --- */
-@font-face {
-  font-family: 'Cabinet Grotesk';
-  src: url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap') format('woff2');
-  font-display: swap;
-}
-
 /* --- CSS Custom Properties (light mode) --- */
 :root {
   --color-primary: var(--theme-primary, #2563EB);
